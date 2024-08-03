@@ -9,7 +9,7 @@ const MuxVideo = withMux(Video);
 
 const video = {
   id: 'randomId',
-  uri: 'https://stream.mux.com/O9iJ2uBxYO9502vWBG95Tl00uI01kLW9r00kHieBFZVcnWQ.m3u8',
+  uri: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
   title: 'Video Title',
   series: 'Video Series',
 };
