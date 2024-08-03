@@ -1,7 +1,7 @@
 {
-  "name": "@codebayu/style-variants",
-  "version": "1.0.1",
-  "description": "The Package for creating dynamic and reusable styles in React Native App",
+  "name": "@codebayu/mux-data-expo-av",
+  "version": "1.0.0",
+  "description": "Mux analytics plugin for expo-av",
   "masin": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,29 +9,32 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codebayu/style-variants.git"
+    "url": "git+https://github.com/codebayu/mux-data-expo-av.git"
   },
   "keywords": [
-    "react-native",
-    "style",
-    "variants",
-    "reusable-component"
+    "mux",
+    "mux-data",
+    "expo-av",
+    "analytics"
   ],
   "author": "bayu setiawan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codebayu/style-variants/issues"
+    "url": "https://github.com/codebayu/mux-data-expo-av/issues"
   },
-  "homepage": "https://github.com/codebayu/style-varian#sreadme",
+  "homepage": "https://github.com/codebayu/mux-data-expo-av#readme",
   "devDependencies": {
     "@types/react": "^18.2.40",
     "@types/react-native": "^0.73.0",
     "react": "^18.2.0",
-    "react-native": "^0.73.7",
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "expo-av": "^14.0.6",
+    "react": "*"
+  },
+  "dependencies": {
+    "expo-device": "^6.0.2",
+    "mux-embed": "^5.2.1"
   }
 }

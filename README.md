@@ -1,112 +1,79 @@
-# @codebayu/style-variants
+# Mux Data Integration with expo-av
 
-The Package for creating dynamic and reusable styles in React Native App
+This is a package for using [Mux Data](https://mux.com/data/) for video QoS monitoring with a expo-av player.
+
+If you are using React Native CLI, check out [this package](https://github.com/muxinc/mux-stats-sdk-react-native-video)
+
+View the DemoApp/ directory to see a demo application that implements this library.
+
+## Requirements
+
+- A functioning react-native application that uses react-native-video.
+- react-native ~> 16.9
+- expo-av ~> 14.0.6
 
 ## Installation
 
 ```bash
 # npm
-npm install @codebayu/style-variants
+npm install @codebayu/mux-data-expo-av
 
 # yarn
-yarn add @codebayu/style-variants
+yarn add @codebayu/mux-data-expo-av
 ```
 
 ## Usage
 
 ```tsx
-// ReusableButton.tsx
-import { sv } from '@codebayu/style-variants';
+import app from './package.json'; // this is your application's package.json
+import { ResizeMode, Video } from 'expo-av'; // import Video from expo-av like you normally would
+import { Platform } from 'react-native';
+import muxExpoAv from 'mux-react-native-video-sdk';
 
-export default function ReusableButton({
-  children,
-  color,
-  size,
-  style,
-  ...rest
-}) {
-  const buttonStyle = buttonVariant({ color, size });
-  const textStyle = textVariant({ color, size });
-  return (
-    <Pressable style={[buttonStyle, style]} {...rest}>
-      <Text style={textStyle}>{children}</Text>
-    </Pressable>
-  );
-}
+// wrap the `Video` component with Mux functionality
+const MuxVideo = muxExpoAv(Video);
 
-const textVariant = sv({
-  base: {
-    fontWeight: '600',
-  },
-  variants: {
-    color: {
-      primary: {
-        color: 'green',
-      },
-      secondary: {
-        color: 'blue',
-      },
-      ghost: {
-        color: 'black',
-      },
+// Pass the same props to `MuxVideo` that you would pass to the
+// `Video` element. All of these props will be passed through to your underlying expo-av component
+// Include a new prop for `muxOptions`
+<MuxVideo
+  source={{
+    uri: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+  }}
+  style={{ width: '100%', aspectRatio: 16 / 9 }}
+  resizeMode={ResizeMode.COVER}
+  isLooping
+  useNativeControls
+  muxOptions={{
+    application_name: app.name, // (required) the name of your application
+    application_version: app.version, // the version of your application (optional, but encouraged)
+    data: {
+      env_key: 'YOUR_ENVIRONMENT_KEY', // (required)
+      player_software_version: '5.0.2', // (optional, but encouraged) the version of expo-av that you are using
+
+      // Site Metadata
+      viewer_user_id: '12345', // ex: '12345'
+      experiment_name: 'player_test_A', // ex: 'player_test_A'
+      sub_property_id: 'cus-1', // ex: 'cus-1'
+
+      // Player Metadata
+      player_name: '', // ex: 'My Main Player'
+      player_version: '', // ex: '1.0.0'
+      player_init_time: 0, // ex: 1451606400000
+
+      // Video Metadata
+      video_id: '', // ex: 'abcd123'
+      video_title: '', // ex: 'My Great Video'
+      video_series: '', // ex: 'Weekly Great Videos'
+      video_duration: '', // in milliseconds, ex: 120000
+      video_stream_type: 'on-demand', // 'live' or 'on-demand'
+      video_cdn: '', // ex: 'Fastly', 'Akamai'
+
+      // Custom Metadata
+      custom_1: 'custom value 1',
     },
-    size: {
-      small: {
-        fontSize: 14,
-      },
-      medium: {
-        fontSize: 16,
-      },
-      large: {
-        fontSize: 18,
-      },
-    },
-  },
-  defaultVariants: {
-    color: 'primary',
-    size: 'medium',
-  },
-});
-
-const buttonVariant = sv({
-  base: {
-    height: 'auto',
-    alignItems: 'center',
-  },
-  variants: {
-    color: {
-      primary: {
-        backgroundColor: '#eee',
-        padding: 17,
-        fontWeight: '600',
-        borderRadius: 5,
-        width: '100%',
-        borderWidth: 1,
-        borderColor: '#eee',
-      },
-      secondary: {
-        backgroundColor: '#e3e3e3',
-        padding: 17,
-        fontWeight: '600',
-        borderRadius: 5,
-        width: '100%',
-        borderWidth: 1,
-        borderColor: '#eee',
-      },
-      ghost: {
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-  defaultVariants: {
-    color: 'primary',
-  },
-});
-
-// Parent Component
-<ReusableButton color="ghost" size="small">
-  Sign Up Here
-</ReusableButton>;
+  }}
+/>;
 ```
 
 ## License
