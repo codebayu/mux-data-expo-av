@@ -6,12 +6,6 @@ If you are using React Native CLI, check out [this package](https://github.com/m
 
 View the DemoApp/ directory to see a demo application that implements this library.
 
-## Requirements
-
-- A functioning react-native application that uses react-native-video.
-- react-native ~> 16.9
-- expo-av ~> 14.0.6
-
 ## Installation
 
 ```bash
@@ -28,7 +22,7 @@ yarn add @codebayu/mux-data-expo-av
 import app from './package.json'; // this is your application's package.json
 import { ResizeMode, Video } from 'expo-av'; // import Video from expo-av like you normally would
 import { Platform } from 'react-native';
-import muxExpoAv from 'mux-react-native-video-sdk';
+import muxExpoAv from '@codebayu/mux-data-expo-av';
 
 // wrap the `Video` component with Mux functionality
 const MuxVideo = muxExpoAv(Video);
