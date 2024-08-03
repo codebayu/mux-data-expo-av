@@ -1,6 +1,6 @@
 {
   "name": "@codebayu/mux-data-expo-av",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mux analytics plugin for expo-av",
   "masin": "dist/index.js",
   "types": "dist/index.d.ts",
