@@ -2718,9 +2718,9 @@ ms@2.1.3:
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
 mux-embed@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/mux-embed/-/mux-embed-5.2.1.tgz#b2f1d8e7653d7386ff298beabbdf5d4940707baf"
-  integrity sha512-NukHw91xeEVDBeXVDBpi2BvXNix7gSuvdtyvOph5yR/ROn1hHbTlcYWoKQyCyJX9frsF00UROEul+S8wPzU3aQ==
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/mux-embed/-/mux-embed-5.4.0.tgz#426890182d390e8ab1b39bb9765d39d6c8a07639"
+  integrity sha512-Q+F9tJQ79ox5FSojYJHX5bBj3ie2LZCKmEce2zja9gA84aalO9gYnmEBsG6cBY48Aj8q7RX4pZX1vsBzlhmXbA==
 
 negotiator@0.6.3:
   version "0.6.3"
